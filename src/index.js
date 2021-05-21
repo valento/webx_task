@@ -12,11 +12,14 @@ import './App.css'
 
 import App from './App'
 import RootReducer from './RootReducer'
+import { userSigned } from './actions/user'
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const initState = {
-  user: {},
+  user: {
+    logged: false
+  },
   settings: {
     lan: 'bg',
     socket: false
@@ -29,6 +32,14 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk))
 )
 
+// Check if user has signedUp:
+// Just username in localStorage as required:
+if(localStorage.webxUser) {
+  // SignedIn -- Unable Logout
+  initState.user.username = localStorage.webxUser
+  initState.user.logged = true
+  store.dispatch(userSigned(initState.user))
+}
 
 const Root = (
   <Provider store={store}>
