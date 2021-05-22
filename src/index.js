@@ -13,6 +13,7 @@ import './App.css'
 import App from './App'
 import RootReducer from './RootReducer'
 import { userSigned } from './actions/user'
+import { getCollection } from './actions/collection'
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -39,6 +40,7 @@ if(localStorage.webxUser) {
   initState.user.username = localStorage.webxUser
   initState.user.logged = true
   store.dispatch(userSigned(initState.user))
+  store.dispatch(getCollection())
 }
 
 const Root = (

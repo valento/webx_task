@@ -6,7 +6,10 @@ import SignUp from './forms/Signup'
 
 const MainPage = ({ isAuthorized,lan,username }) => {
   return (
-    <div>CatalogPage</div>
+    <div className='init topped padded'>
+      <h1>Catalog Page</h1>
+      <CatalogPage />
+    </div>
   )
 }
 

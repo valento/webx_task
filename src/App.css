@@ -272,4 +272,8 @@ p.short {
     padding-left: 16px;
     padding-right: 16px;
   }
+  .central {
+    margin: 0 auto;
+    max-width: 400px;
+  }
 }

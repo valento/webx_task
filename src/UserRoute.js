@@ -17,7 +17,7 @@ UserRoute.propTypes = {
 
 const mapStateToProps = state => ({
   lan: state.settings.lan,
-  isAuth: !!state.user.logged
+  isAuth: state.user.logged
 })
 
 export default connect(mapStateToProps)(UserRoute)

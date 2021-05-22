@@ -1,9 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const CatalogPage = () => {
+import Catalog from './Catalog'
+import Pagination from './Pagination'
+
+const CatalogPage = ({ lan }) => {
   return (
-    <div>All Episodes Page</div>
+    <div>
+      <p>All Episodes Page</p>
+      <Catalog />
+      <Pagination />
+    </div>
   )
 }
 
-export default CatalogPage
+const mapStateToProps = state => ({
+  lan: state.settings.lan
+})
+
+export default connect(mapStateToProps)(CatalogPage)
