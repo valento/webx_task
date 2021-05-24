@@ -3,21 +3,23 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import SignupForm from './forms/Signup'
 import MainPage from './MainPage'
 import UserRoute from './UserRoute'
-import CatalogPage from './CatalogPage'
-import EpisodePage from './EpisodePage'
+import Episode from './Episode'
+import Signup from './forms/Signup'
+import Locate from './Location'
+import Origin from './Origin'
 
 // Routes:
 const App = ({location}) => {
   return (
     <div className='App'>
       <UserRoute location={location} path='/' exact component={MainPage}/>
+      <Route location={location} path='/signup' exact component={Signup}/>
+      <Route location={location} path='/location/:id' exact component={Locate}/>
+      <Route location={location} path='/origin/:id' exact component={Origin}/>
 {/* ========= USER ================== */}
-      <UserRoute location={location} path='/catalog' exact component={CatalogPage}/>
-      <UserRoute location={location} path='/play' exact component={EpisodePage}/>
-      <Route location={location} path='/signup' exact component={SignupForm}/>
+      <UserRoute location={location} path='/episode/:id' exact component={Episode}/>
     </div>
   )
 }

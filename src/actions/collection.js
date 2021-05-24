@@ -12,8 +12,8 @@ export const getCollection = () => dispatch => {
   })
 }
 
-export const getNextCollection = page => dispatch => {
-  api.collection.getCollection(page).then( result => {
-    dispatch(haveCollection(result.data.results))
+export const getNextCollection = url => dispatch => {
+  api.collection.getPage(url).then( result => {
+    dispatch(haveCollection(result.data))
   })
 }

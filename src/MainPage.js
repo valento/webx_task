@@ -2,13 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropType from 'prop-types'
 import CatalogPage from './CatalogPage'
-import SignUp from './forms/Signup'
 
-const MainPage = ({ isAuthorized,lan,username }) => {
+const MainPage = ({ lan,username,catalog=[],info }) => {
   return (
     <div className='init topped padded'>
       <h1>Catalog Page</h1>
-      <CatalogPage />
+      {catalog.length>0?
+        <CatalogPage catalog={catalog} info={info} /> :
+        <p>Wait...</p>
+      }
     </div>
   )
 }
@@ -16,13 +18,14 @@ const MainPage = ({ isAuthorized,lan,username }) => {
 MainPage.propType = {
   lan: PropType.string.isRequired,
   username: PropType.number.isRequired,
-  isAuthorized: PropType.bool.isRequired
+  catalog: PropType.array.isRequired
 }
 
 const mapStateToProps = state => ({
   lan: state.settings.lan,
-  isAuthorized: state.user.logged,
-  username: state.user.username
+  username: state.user.username,
+  catalog: state.collection.results,
+  info: state.collection.info
 })
 
 export default connect(mapStateToProps)(MainPage)

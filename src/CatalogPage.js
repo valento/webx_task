@@ -4,18 +4,22 @@ import { connect } from 'react-redux'
 import Catalog from './Catalog'
 import Pagination from './Pagination'
 
-const CatalogPage = ({ lan }) => {
+import { getNextCollection } from './actions/collection'
+
+const CatalogPage = ({ lan,catalog,info,getNextCollection }) => {
+
+  const onPageClick = arrow => {
+    getNextCollection(info[arrow])
+  }
+
   return (
-    <div>
+    <div className='collection-table'>
       <p>All Episodes Page</p>
-      <Catalog />
-      <Pagination />
+      <Catalog catalog={catalog} />
+      <Pagination info={info} navPage={onPageClick} />
     </div>
   )
 }
 
-const mapStateToProps = state => ({
-  lan: state.settings.lan
-})
 
-export default connect(mapStateToProps)(CatalogPage)
+export default connect(null,{ getNextCollection })(CatalogPage)

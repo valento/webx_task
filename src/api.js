@@ -3,7 +3,8 @@ import axios from 'axios'
 
 export default {
   collection: {
-    getCollection: (page='') => axios.get('https://rickandmortyapi.com/api/episode/'.concat('',page)).then( res => res ),
+    getCollection: () => axios.get('https://rickandmortyapi.com/api/episode/').then( res => res ),
+    getPage: uri => axios.get(uri).then( res => res )
     //checkOne: () => axios.get('/auth/check').then( res => res.data),
     //initUser: () => axios.get('/user').then( res => res.data.user ),
     //addLocation: data => axios.post('/user/location', { data }).then( res => {

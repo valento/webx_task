@@ -1,20 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Catalog = ({ catalog }) => {
+import EpisodePage from './EpisodePage'
+
+const Catalog = ({ catalog=[] }) => {
   return (
     <div>
       <ul>
         {catalog.map( item => {
-          return <li>{item.name}</li>
+          return <EpisodePage item={item} />
         })}
       </ul>
     </div>
   )
 }
 
-const mapStateToProps = state => ({
-  catalog: state.collection.results
-})
+//const mapStateToProps = state => ({
+//  catalog: state.collection.results
+//})
 
-export default connect(mapStateToProps)(Catalog)
+export default Catalog
