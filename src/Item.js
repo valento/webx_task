@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom'
 
 import ItemCard from './ItemCard'
 
-const Episode = ({match,episodes,name}) => {
+const Item = ({match,episodes,name}) => {
 
   const [ character,setChars ] = useState([])
+  const item_type = match.path.split('/')[1]
 
   useEffect(() => {
   // Make an array of api-calls, without recursive loop:
@@ -41,7 +42,7 @@ const Episode = ({match,episodes,name}) => {
             }
             return (
               <li style={style}>
-                <ItemCard i='char' type='epi' item={Object.assign({},{name,status,species,origin,location,gender,image},{index: ind})} />
+                <ItemCard type={item_type} item={Object.assign({},{name,status,species,origin,location,gender,image},{index: ind})} />
               </li>)
           })}
         </ul>
@@ -57,4 +58,4 @@ const mapStateToProps = (state,match) => ({
   episodes: state.collection.results
 })
 
-export default connect(mapStateToProps)(Episode)
+export default connect(mapStateToProps)(Item)

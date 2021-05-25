@@ -7,8 +7,8 @@ const Catalog = ({ catalog=[] }) => {
   return (
     <div>
       <ul>
-        {catalog.map( item => {
-          return <EpisodePage item={item} />
+        {catalog.map( (item,ind) => {
+          return <EpisodePage item={Object.assign({},item,{index: (ind+1)})} />
         })}
       </ul>
     </div>
