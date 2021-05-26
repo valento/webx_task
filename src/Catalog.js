@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import EpisodePage from './EpisodePage'
+import SearchForm from './forms/SearchForm'
 
 const Catalog = ({ catalog=[] }) => {
   return (

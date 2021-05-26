@@ -4,6 +4,7 @@ import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import ItemCard from './ItemCard'
+import SearchForm from './forms/SearchForm'
 
 const Episode = ({match,episodes,name}) => {
 
@@ -30,7 +31,11 @@ const Episode = ({match,episodes,name}) => {
 
   return (
     <div className='init topped padded'>
+
       <h2>{episodes.find( e=>e.id===Number(match.params.id)).name}</h2>
+
+      <SearchForm names={character} />
+
       <h3>Characters:</h3>
       <div className='collection-table'>
         <ul>
